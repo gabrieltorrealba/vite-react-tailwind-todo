@@ -1,79 +1,56 @@
-import AlertIcon from "./components/icons/AlertIcon"
-import CrossIcon from "./components/icons/CrossIcon"
-import MoonIcon from "./components/icons/MoonIcon"
+import { useState } from "react"
+import Header from "./components/Header"
+import TodoComputed from "./components/todos/TodoComputed"
+import TodoCreate from "./components/todos/TodoCreate"
+import TodoList from "./components/todos/TodoList"
+
+const initialState = [
+  {
+    id: 1,
+    state: "TODO",
+    priority: "high",
+    title: "Complete js curse",
+    description: "",
+    createAt: "15/02/24 19:35:02",
+    completedAt: ""
+  },
+  {
+    id: 2,
+    state: "WIP",
+    priority: "medium",
+    title: "Other todo 2",
+    description: "",
+    createAt: "15/02/24 19:41:12",
+    completedAt: ""
+  },
+  {
+    id: 3,
+    state: "DONE",
+    priority: "low",
+    title: "Other todo 3",
+    description: "",
+    createAt: "15/02/24 19:50:02",
+    completedAt: "15/02/24 19:56:30"
+  }
+]
 
 const App = () => {
+
+  const [todos, setTodos] = useState(initialState)
+
   return (
     <div className="bg-[url('./assets/images/bg-mobile-light.jpg')] bg-no-repeat bg-contain bg-gray-200 min-h-screen">
-      <header className="container mx-auto px-4 pt-8">
-        <div className="flex justify-between">
-          <h1 className="uppercase text-white text-2xl font-semibold tracking-[0.3em]">Todo</h1>
-          <button>
-            <MoonIcon />
-          </button>
-        </div>
-        <form className="bg-white rounded-md overflow-hidden py-4 px-4 flex gap-4 items-center mt-8">
-          <span className="rounded-full border-2 h-5 w-5 inline-block"></span>
-          <input className="w-full text-gray-400 outline-none" 
-          type="text" placeholder="Create a new todo..."/>
-        </form>
-      </header>
+      
+      <Header />
 
       <main  className="container mx-auto px-4 mt-8">
-        <div className="bg-white rounded-md px-4 py-4 mb-1.5 shadow-md relative">
-          <div className="absolute -top-1.5 left-0 text-sm bg-[#B6C2CF] px-2 rounded-md text-white font-semibold">
-            <span >TODO</span>
-          </div>
-          <span className="absolute -top-1.5 -right-1.5" >
-              <AlertIcon fill="#FF0000"/>
-          </span>
-          <article className="flex gap-4 border-b-gray-400">
-            <button className="rounded-full border-2 h-5 w-5 inline-block flex-none"></button>
-            <p className=" text-gray-600 grow">Complete js curse</p>
-            <button className="flex-none">
-              <CrossIcon />
-            </button>
-          </article>
-        </div>
-
-
-        <div className="bg-white rounded-md px-4 py-4 mb-1.5 shadow-md relative">
-          <div className="absolute -top-1.5 left-0 text-sm bg-[#85B8FF] px-2 rounded-md text-white font-semibold">
-              <span >WIP</span>
-          </div>
-          <span className="absolute -top-1.5 -right-1.5" >
-              <AlertIcon fill="#FFCC66"/>
-          </span>
-          <article className="flex gap-4 border-b-gray-400">
-            <button className="rounded-full border-2 h-5 w-5 inline-block flex-none"></button>
-            <p className=" text-gray-600 grow">Other thing</p>
-            <button className="flex-none">
-              <CrossIcon />
-            </button>
-          </article>
-        </div>
-
-        <div className="bg-white rounded-md px-4 py-4 mb-1.5 shadow-md relative">
-          <div className="absolute -top-1.5 left-0 text-sm bg-[#4BCE97] px-2 rounded-md text-white font-semibold">
-              <span >DONE</span>
-          </div>
-          <span className="absolute -top-1.5 -right-1.5" >
-              <AlertIcon fill="#317f43"/>
-          </span>
-          <article className="flex gap-4 border-b-gray-400">
-            <button className="rounded-full border-2 h-5 w-5 inline-block flex-none"></button>
-            <p className=" text-gray-600 grow">Other thing</p>
-            <button className="flex-none">
-              <CrossIcon />
-            </button>
-          </article>
-        </div>
         
-        <section className="bg-white rounded-md px-4 py-4 mb-1 shadow-md flex justify-between">
-            <span className=" text-gray-400">5 items left</span>
-            <button className=" text-gray-400">Clear Completed</button>
-        </section>
-    
+        <TodoCreate />
+        
+        <TodoList todos={todos}/>
+        
+        <TodoComputed />
+
       </main>
 
       <section className="container mx-auto px-4">
