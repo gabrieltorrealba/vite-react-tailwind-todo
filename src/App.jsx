@@ -21,11 +21,13 @@ const App = () => {
 
       <main  className="container mx-auto px-4 mt-8">
         <div className="bg-white rounded-md px-4 py-4 mb-1.5 shadow-md relative">
-        <span className="absolute -top-1.5 -right-1.5" >
-            <AlertIcon />
-        </span>
+          <div className="absolute -top-1.5 left-0 text-sm bg-[#B6C2CF] px-2 rounded-md text-white font-semibold">
+            <span >TODO</span>
+          </div>
+          <span className="absolute -top-1.5 -right-1.5" >
+              <AlertIcon fill="#FF0000"/>
+          </span>
           <article className="flex gap-4 border-b-gray-400">
-          
             <button className="rounded-full border-2 h-5 w-5 inline-block flex-none"></button>
             <p className=" text-gray-600 grow">Complete js curse</p>
             <button className="flex-none">
@@ -33,10 +35,31 @@ const App = () => {
             </button>
           </article>
         </div>
+
+
         <div className="bg-white rounded-md px-4 py-4 mb-1.5 shadow-md relative">
-        <span className="absolute -top-1.5 -right-1.5" >
-            <AlertIcon />
-        </span>
+          <div className="absolute -top-1.5 left-0 text-sm bg-[#85B8FF] px-2 rounded-md text-white font-semibold">
+              <span >WIP</span>
+          </div>
+          <span className="absolute -top-1.5 -right-1.5" >
+              <AlertIcon fill="#FFCC66"/>
+          </span>
+          <article className="flex gap-4 border-b-gray-400">
+            <button className="rounded-full border-2 h-5 w-5 inline-block flex-none"></button>
+            <p className=" text-gray-600 grow">Other thing</p>
+            <button className="flex-none">
+              <CrossIcon />
+            </button>
+          </article>
+        </div>
+
+        <div className="bg-white rounded-md px-4 py-4 mb-1.5 shadow-md relative">
+          <div className="absolute -top-1.5 left-0 text-sm bg-[#4BCE97] px-2 rounded-md text-white font-semibold">
+              <span >DONE</span>
+          </div>
+          <span className="absolute -top-1.5 -right-1.5" >
+              <AlertIcon fill="#317f43"/>
+          </span>
           <article className="flex gap-4 border-b-gray-400">
             <button className="rounded-full border-2 h-5 w-5 inline-block flex-none"></button>
             <p className=" text-gray-600 grow">Other thing</p>
