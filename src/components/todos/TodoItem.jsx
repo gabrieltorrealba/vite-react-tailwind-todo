@@ -17,10 +17,10 @@ const TodoItem = ({todo}) => {
                 <AlertIcon fill={`${priority === 'high' ? '#FF0000' : priority === 'medium' ? '#FFCC66' : '#317f43'}`}/>
             </span>
             <article className="flex gap-4 border-b-gray-400">
-                <span className="rounded-full border-2 h-5 w-5 inline-block">
-                    {/* {
+                <span className={`rounded-full border-2 h-5 w-5 flex justify-center items-center ${state === 'DONE' && 'bg-gradient-to-br from-blue-500 via-violet-400 to-purple-400'}`}>
+                    {
                         state === 'DONE' && <IconCheck />
-                    } */}
+                    }
                 </span>
                 <p className={`text-gray-600 grow ${state === 'DONE' && 'line-through'}`}>{title}</p>
                 <button className="flex-none">

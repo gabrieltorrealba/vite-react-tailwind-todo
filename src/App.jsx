@@ -37,6 +37,32 @@ const initialState = [
 const App = () => {
 
   const [todos, setTodos] = useState(initialState)
+  const newDate = new Date();
+  const newDateStr = newDate.toLocaleDateString('es-AR', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  });
+  const hourStr = newDate.toLocaleTimeString('es-AR', {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+  });
+
+const newDateComplete = `${newDateStr} ${hourStr}`;
+
+  const createTodo = (title,  priority) => {
+    const newTodo = {
+      id: todos.length + 1,
+      state: "TODO",
+      title: title.trim(),
+      priority,
+      description: "",
+      createAt: newDateComplete,
+      completedAt: ""
+    }
+    setTodos([...todos, newTodo])
+  }
 
   return (
     <div className="bg-[url('./assets/images/bg-mobile-light.jpg')] bg-no-repeat bg-contain bg-gray-200 min-h-screen">
@@ -45,7 +71,7 @@ const App = () => {
 
       <main  className="container mx-auto px-4 mt-8">
         
-        <TodoCreate />
+        <TodoCreate createTodo={createTodo}/>
         
         <TodoList todos={todos}/>
         
