@@ -1,4 +1,5 @@
 import CrossIcon from "../icons/CrossIcon"
+import IconCheck from "../icons/IconCheck"
 
 const TodoDescription = ({todo, onClose}) => {
     const {id, state, title,priority, description, createAt, completedAt} = todo
@@ -11,8 +12,12 @@ const TodoDescription = ({todo, onClose}) => {
                 <div className="grow  border-r-gray-200 border-r-2 flex flex-col">
                 <section className="overflow-hidden flex gap-4 r-gray-200 border-b-2 px-4 py-4 flex-none">
                     <span 
-                    className="rounded-full border-2 h-5 w-5 inline-block" />
-                    <p className="text-gray-600 grow">
+                    className={`rounded-full border-2 h-5 w-5 inline-block flex justify-center items-center ${state === 'DONE' && 'bg-gradient-to-br from-blue-500 via-violet-400 to-purple-400'}`} >
+                        {
+                            state === 'DONE' && <IconCheck />
+                        }
+                        </span>
+                    <p className={`text-gray-600 grow ${state === 'DONE' && 'line-through'}`}>
                     {title}
                     </p>
                 </section>
