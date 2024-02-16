@@ -65,11 +65,13 @@ const newDateComplete = `${newDateStr} ${hourStr}`;
   }
 
   return (
+    <>
+      
     <div className="bg-[url('./assets/images/bg-mobile-light.jpg')] bg-no-repeat bg-contain bg-gray-200 min-h-screen">
       
       <Header />
 
-      <main  className="container mx-auto px-4 mt-8">
+      <main  className="container mx-auto  mt-8">
         
         <TodoCreate createTodo={createTodo}/>
         
@@ -78,17 +80,11 @@ const newDateComplete = `${newDateStr} ${hourStr}`;
         <TodoComputed />
 
       </main>
-
-      <section className="container mx-auto px-4">
-        <div className="bg-white rounded-md mt-8 p-4 flex justify-center gap-4">
-          <button className=" hover:text-blue-700 text-gray-600 font-semibold">All</button>
-          <button className=" hover:text-blue-700 text-gray-600 font-semibold">Active</button>
-          <button className=" hover:text-blue-700 text-gray-600 font-semibold">Completed</button>
-        </div>
-      </section>
+ 
 
       <section className="text-center mt-8 text-gray-400 font-semibold">Drag an drop to reorder list</section>
     </div>
+    </>
   )
 }
 

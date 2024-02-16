@@ -31,7 +31,7 @@ const TodoCreate = ({ createTodo }) => {
         Swal.fire({
             position: "center",
             icon: "success",
-            title: "Your work has been saved",
+            title: "Your todo has been saved",
             showConfirmButton: false,
             timer: 1500
           })
@@ -45,17 +45,19 @@ const TodoCreate = ({ createTodo }) => {
     };
 
     return(
-        <form onSubmit={handlerSubmit}
-        className="bg-white rounded-md overflow-hidden py-4 px-4 flex gap-4 items-center mt-8 mb-8">
-            <span 
-            className="rounded-full border-2 h-5 w-5 inline-block" />
-            <input 
-            className="w-full text-gray-400 outline-none" 
-            type="text"
-            placeholder="Create a new todo..."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}/>
-        </form>
+        <div className="px-4">
+            <form onSubmit={handlerSubmit}
+            className="bg-white rounded-md overflow-hidden py-4 px-4 flex gap-4 items-center mt-8 mb-8">
+                <span 
+                className="rounded-full border-2 h-5 w-5 inline-block" />
+                <input 
+                className="w-full text-gray-400 outline-none" 
+                type="text"
+                placeholder="Create a new todo..."
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}/>
+            </form>
+        </div>
     )
 }
 
