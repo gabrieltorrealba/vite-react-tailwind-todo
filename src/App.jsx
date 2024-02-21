@@ -31,8 +31,64 @@ const initialState = [
     description: "",
     createAt: "15/02/24 19:50:02",
     completedAt: "15/02/24 19:56:30"
+  },
+  {
+    id: 4,
+    state: "TODO",
+    priority: "medium",
+    title: "todo 4",
+    description: "",
+    createAt: "16/02/24 19:35:02",
+    completedAt: ""
+  },
+  {
+    id: 5,
+    state: "WIP",
+    priority: "low",
+    title: "Todo 5",
+    description: "",
+    createAt: "16/02/24 19:41:12",
+    completedAt: ""
+  },
+  {
+    id: 6,
+    state: "DONE",
+    priority: "medium",
+    title: "Todo 6",
+    description: "",
+    createAt: "16/02/24 19:50:02",
+    completedAt: "16/02/24 19:56:30"
+  },
+  {
+    id: 7,
+    state: "TODO",
+    priority: "low",
+    title: "todo 7",
+    description: "",
+    createAt: "16/02/24 20:35:02",
+    completedAt: ""
+  },
+  {
+    id: 8,
+    state: "WIP",
+    priority: "high",
+    title: "Todo 8",
+    description: "",
+    createAt: "16/02/24 20:41:12",
+    completedAt: ""
+  },
+  {
+    id: 9,
+    state: "DONE",
+    priority: "high",
+    title: "Todo 9",
+    description: "",
+    createAt: "16/02/24 20:50:02",
+    completedAt: "16/02/24 20:56:30"
   }
 ]
+
+
 
 const App = () => {
 
@@ -64,6 +120,34 @@ const newDateComplete = `${newDateStr} ${hourStr}`;
     setTodos([...todos, newTodo])
   }
 
+  function ordenarPorPrioridadFecha(array) {
+    const prioridades = {
+      high: 1,
+      medium: 2,
+      low: 3,
+    };
+  
+    return array.sort((a, b) => {
+      const prioridadA = prioridades[a.priority];
+      const prioridadB = prioridades[b.priority];
+  
+      // Ordenar por prioridad
+      if (prioridadA !== prioridadB) {
+        return prioridadA - prioridadB;
+      }
+  
+      // Si las prioridades son iguales, ordenar por fecha de creación
+      const fechaA = new Date(a.createAt).getTime();
+      const fechaB = new Date(b.createAt).getTime();
+      return fechaA - fechaB;
+    });
+  }
+  
+
+  
+  
+
+
   return (
     <>
       
@@ -75,12 +159,11 @@ const newDateComplete = `${newDateStr} ${hourStr}`;
         
         <TodoCreate createTodo={createTodo}/>
         
-        <TodoList todos={todos}/>
-        
-        <TodoComputed />
 
       </main>
- 
+      <TodoList todos={initialState}/>
+     
+      <TodoComputed />
 
       <section className="text-center mt-8 text-gray-400 font-semibold">Drag an drop to reorder list</section>
     </div>
