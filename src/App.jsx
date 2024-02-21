@@ -143,7 +143,7 @@ const newDateComplete = `${newDateStr} ${hourStr}`;
     });
   }
   
-  const sortedState = ordenarPorPrioridadFecha(initialState);
+  const sortedState = ordenarPorPrioridadFecha(todos);
 
   const states = sortedState.reduce((acc, item) => {
     // Agregar el item al array correspondiente a su estado
