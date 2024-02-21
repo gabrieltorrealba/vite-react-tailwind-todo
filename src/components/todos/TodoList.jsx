@@ -3,16 +3,13 @@ import TodoAccordion from "./TodoAccordion";
 import TodoDescription from "./TodoDescription";
 
 const TodoList = ({ todos }) => {
-  const todoInTodo = todos.filter(todo => todo.state === 'TODO');
-  const todoInWip = todos.filter(todo => todo.state === 'WIP');
-  const todoInDone = todos.filter(todo => todo.state === 'DONE');
+  const {TODO, WIP, DONE } = todos
 
   const [showDescription, setShowDescription] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState(null);
 
   const handleTodoClick = (todo) => {
     setSelectedTodo(todo);
-    console.log(todo);
     setShowDescription(true);
   }
 
@@ -24,19 +21,19 @@ const TodoList = ({ todos }) => {
     <>
       <TodoAccordion
         state={'TODO'}
-        todos={todoInTodo}
+        todos={TODO}
         onClick={handleTodoClick}
       />
 
       <TodoAccordion
         state={'WIP'}
-        todos={todoInWip}
+        todos={WIP}
         onClick={handleTodoClick}
       />
 
       <TodoAccordion
         state={'DONE'}
-        todos={todoInDone}
+        todos={DONE}
         onClick={handleTodoClick}
       />
 

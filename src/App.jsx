@@ -143,7 +143,17 @@ const newDateComplete = `${newDateStr} ${hourStr}`;
     });
   }
   
+  const sortedState = ordenarPorPrioridadFecha(initialState);
 
+  const states = sortedState.reduce((acc, item) => {
+    // Agregar el item al array correspondiente a su estado
+    acc[item.state].push(item);
+    return acc;
+  }, {
+    TODO: [],
+    WIP: [],
+    DONE: [],
+  })
   
   
 
@@ -161,7 +171,7 @@ const newDateComplete = `${newDateStr} ${hourStr}`;
         
 
       </main>
-      <TodoList todos={initialState}/>
+      <TodoList todos={states}/>
      
       <TodoComputed />
 
