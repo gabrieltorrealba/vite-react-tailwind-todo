@@ -1,9 +1,12 @@
 import { useState } from "react";
 import TodoAccordion from "./TodoAccordion";
 import TodoDescription from "./TodoDescription";
+import TodoComputed from "./TodoComputed";
 
 const TodoList = ({ todos }) => {
   const {TODO, WIP, DONE } = todos
+  const todoItems = TODO.length + WIP.length
+  console.log(todoItems);
 
   const [showDescription, setShowDescription] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState(null);
@@ -36,6 +39,9 @@ const TodoList = ({ todos }) => {
         todos={DONE}
         onClick={handleTodoClick}
       />
+
+    <TodoComputed 
+    items={todoItems}/>
 
       {showDescription && selectedTodo &&
         <TodoDescription
